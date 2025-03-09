@@ -19,36 +19,37 @@ candy_img = 0
 
 def isWall(cx, cy, dir, dot):
     iswall = False
+    margin = 10  # 判定範囲を小さくするためのマージンを追加
     if dir == DIR_UP:
-        map_x = int((cx-img_wid/2)/img_wid)
-        map_y = int((cy-img_wid/2-dot)/img_wid)
+        map_x = int((cx-img_wid/2+margin)/img_wid)
+        map_y = int((cy-img_wid/2-dot+margin)/img_wid)
         if map_data[map_y][map_x] <= 1:
             iswall = True      
-        map_x = int((cx+img_wid/2)/img_wid)
+        map_x = int((cx+img_wid/2-margin)/img_wid)
         if map_data[map_y][map_x] <= 1:
             iswall = True
     if dir == DIR_DOWN:
-        map_x = int((cx-img_wid/2)/img_wid)
-        map_y = int((cy+img_wid/2+dot)/img_wid)
+        map_x = int((cx-img_wid/2+margin)/img_wid)
+        map_y = int((cy+img_wid/2+dot-margin)/img_wid)
         if map_data[map_y][map_x] <= 1:
             iswall = True
-        map_x = int((cx+img_wid/2)/img_wid)
+        map_x = int((cx+img_wid/2-margin)/img_wid)
         if map_data[map_y][map_x] <= 1:
             iswall = True
     if dir == DIR_LEFT:
-        map_x = int((cx-img_wid/2-dot)/img_wid)
-        map_y = int((cy-img_wid/2)/img_wid)
+        map_x = int((cx-img_wid/2-dot+margin)/img_wid)
+        map_y = int((cy-img_wid/2+margin)/img_wid)
         if map_data[map_y][map_x] <= 1:
             iswall = True
-        map_y = int((cy+img_wid/2)/img_wid)
+        map_y = int((cy+img_wid/2-margin)/img_wid)
         if map_data[map_y][map_x] <= 1:
             iswall = True
     if dir == DIR_RIGHT:
-        map_x = int((cx+img_wid/2+dot)/img_wid)
-        map_y = int((cy-img_wid/2)/img_wid)
+        map_x = int((cx+img_wid/2+dot-margin)/img_wid)
+        map_y = int((cy-img_wid/2+margin)/img_wid)
         if map_data[map_y][map_x] <= 1:
             iswall = True
-        map_y = int((cy+img_wid/2)/img_wid)
+        map_y = int((cy+img_wid/2-margin)/img_wid)
         if map_data[map_y][map_x] <= 1:
             iswall = True
     return iswall
