@@ -4,7 +4,6 @@ import keys
 
 img_wid = image.get_image_size()[0]
 map_data = map.map_data
-key = keys.get_key()[0]
 
 DIR_UP = 0
 DIR_DOWN = 1
@@ -55,6 +54,7 @@ def isWall(cx, cy, dir, dot):
     return iswall
 
 def move(dot):
+    key = keys.get_key()[0]
     global candy_x, candy_y, candy_dir, candy_img
     if key == 'Up':
         candy_dir = DIR_UP
@@ -75,4 +75,7 @@ def move(dot):
 
 def update(tmr):
     global candy_img
-    candy_img = candy_dir*3 + ANIMATION[tmr%4]
+    if keys.get_key()[0] == "":
+        candy_img = candy_dir*3
+    else:
+        candy_img = candy_dir*3 + ANIMATION[tmr%4]

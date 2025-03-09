@@ -6,7 +6,6 @@ def key_down(e):
     global key, koff
     key = e.keysym
     koff = False
-    print(key)
 
 def key_up(e):
     global key
