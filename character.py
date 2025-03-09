@@ -2,7 +2,7 @@ import image
 import map
 import keys
 
-img_wid = image.get_image_size()[0]
+img_sz = image.get_image_size()[0]
 map_data = map.map_data
 
 DIR_UP = 0
@@ -21,35 +21,35 @@ def isWall(cx, cy, dir, dot):
     iswall = False
     margin = 10  # 判定範囲を小さくするためのマージンを追加
     if dir == DIR_UP:
-        map_x = int((cx-img_wid/2+margin)/img_wid)
-        map_y = int((cy-img_wid/2-dot+margin)/img_wid)
+        map_x = int((cx-img_sz/2+margin)/img_sz)
+        map_y = int((cy-img_sz/2-dot+margin)/img_sz)
         if map_data[map_y][map_x] <= 1:
             iswall = True      
-        map_x = int((cx+img_wid/2-margin)/img_wid)
+        map_x = int((cx+img_sz/2-margin)/img_sz)
         if map_data[map_y][map_x] <= 1:
             iswall = True
     if dir == DIR_DOWN:
-        map_x = int((cx-img_wid/2+margin)/img_wid)
-        map_y = int((cy+img_wid/2+dot-margin)/img_wid)
+        map_x = int((cx-img_sz/2+margin)/img_sz)
+        map_y = int((cy+img_sz/2+dot-margin)/img_sz)
         if map_data[map_y][map_x] <= 1:
             iswall = True
-        map_x = int((cx+img_wid/2-margin)/img_wid)
+        map_x = int((cx+img_sz/2-margin)/img_sz)
         if map_data[map_y][map_x] <= 1:
             iswall = True
     if dir == DIR_LEFT:
-        map_x = int((cx-img_wid/2-dot+margin)/img_wid)
-        map_y = int((cy-img_wid/2+margin)/img_wid)
+        map_x = int((cx-img_sz/2-dot+margin)/img_sz)
+        map_y = int((cy-img_sz/2+margin)/img_sz)
         if map_data[map_y][map_x] <= 1:
             iswall = True
-        map_y = int((cy+img_wid/2-margin)/img_wid)
+        map_y = int((cy+img_sz/2-margin)/img_sz)
         if map_data[map_y][map_x] <= 1:
             iswall = True
     if dir == DIR_RIGHT:
-        map_x = int((cx+img_wid/2+dot-margin)/img_wid)
-        map_y = int((cy-img_wid/2+margin)/img_wid)
+        map_x = int((cx+img_sz/2+dot-margin)/img_sz)
+        map_y = int((cy-img_sz/2+margin)/img_sz)
         if map_data[map_y][map_x] <= 1:
             iswall = True
-        map_y = int((cy+img_wid/2-margin)/img_wid)
+        map_y = int((cy+img_sz/2-margin)/img_sz)
         if map_data[map_y][map_x] <= 1:
             iswall = True
     return iswall
@@ -80,3 +80,11 @@ def update(tmr):
         candy_img = candy_dir*3
     else:
         candy_img = candy_dir*3 + ANIMATION[tmr%4]
+
+    map_x = int(candy_x/img_sz)
+    map_y = int(candy_y/img_sz)
+    if map_data[map_y][map_x] == 3:
+        map_data[map_y][map_x] = 2
+        print("Candy GET")
+
+        

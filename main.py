@@ -10,7 +10,6 @@ import character
 # DIR_RIGHT = 3
 
 tmr = 0
-# key, koff = keys.get_key()
 
 root = tkinter.Tk()
 root.title("LIFE IS MELTY")
@@ -45,7 +44,7 @@ def main():
     character.move(10)
     character.update(tmr)
     keys.key_update()
-    root.after(100, main)
+    root.after(50, main)
 
 canvas = tkinter.Canvas(width=img_wid*map.map_size_x,
                         height=img_hei*map.map_sizs_y)

@@ -8,7 +8,8 @@ def initialize_image():
     img_bg = [
         tkinter.PhotoImage(file="image/map/map01.png"),
         tkinter.PhotoImage(file="image/map/map02.png"),
-        tkinter.PhotoImage(file="image/map/map03.png")
+        tkinter.PhotoImage(file="image/map/map03.png"),
+        tkinter.PhotoImage(file="image/map/map04.png")
     ]
 
     img_candy = [
